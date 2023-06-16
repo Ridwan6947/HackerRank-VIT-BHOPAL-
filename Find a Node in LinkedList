@@ -1,0 +1,59 @@
+import java.util.*;
+
+
+public class Solution{
+    class Node{
+        int data;
+        Node next;
+    
+        public Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+    
+    static Node head = null;
+    static Node tail = null;
+    
+    
+    
+    public void add(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode;
+            tail = newNode;
+        } else{
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+    
+    
+    public static int search(Node head , int x){
+        Node temp = head;
+        int count = 0;
+        while(temp != null){
+            if(temp.data == x){
+                return count;   
+            }
+            count++;
+            temp = temp.next;
+        }
+        return -1;
+    }
+
+    public static void main(String [] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        Solution l1 = new Solution();
+        while(n != -1){
+            l1.add(n);
+            n = sc.nextInt();
+        }      
+        int x = sc.nextInt();
+        
+        int ans = search(head , x); 
+        System.out.println(ans);
+    }
+}
